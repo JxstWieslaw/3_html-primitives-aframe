@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="interact.js"></script>
+    <title>Build a scene</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img
+          id="boxTexture"
+          src="https://cdn.glitch.com/b870d9ec-1139-44f9-b462-223e4a2c74e7%2Ftexture.jpg?1490308149272"
+        />
+        <img
+          id="skyTexture"
+          src="https://cdn.glitch.com/b870d9ec-1139-44f9-b462-223e4a2c74e7%2Fsechelt.jpg?1490307995926"
+        />
+        <img id="box2Texture" src="https://i.imgur.com/87DMsNu.jpeg" />
+        <img id="groundTexture" src="https://i.imgur.com/YvlacEI.jpeg" />
+        <img id="coneTexture" src="https://i.imgur.com/msRggIq.jpeg" />
+        <img id="sphereTexture" src="https://i.imgur.com/G4p8a4Y.jpeg" />
+        <!--         we add an <audio> element to to our HTML  -->
+        <audio
+          src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
+          autoplay
+          preload
+        ></audio>
+        <!--          we can add positional audio using <a-sound> -->
+        <a-sound
+          src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"
+          autoplay="true"
+          position="-3 1 -4"
+        ></a-sound>
+      </a-assets>
+      <a-sky src="#skyTexture"></a-sky>
+      <a-text
+        value="Hello, Welcome!"
+        color="#dc2f02"
+        position="-1.5 2.9 -2.8"
+        scale="1.8 1.8 1.5"
+      ></a-text>
+      <a-box
+        src="#boxTexture"
+        position="-3 2 -7"
+        rotation="0 67 67"
+        scale="2 2 2"
+      >
+        <a-animation
+          attribute="position"
+          to="-3 2.2 -7"
+          direction="alternate"
+          dur="2000"
+          repeat="indefinite"
+        ></a-animation>
+        <a-animation
+          attribute="scale"
+          begin="mouseenter"
+          dur="300"
+          to="2.3 2.3 2.3"
+        ></a-animation>
+        <a-animation
+          attribute="scale"
+          begin="mouseleave"
+          dur="300"
+          to="2 2 2"
+        ></a-animation>
+        <a-animation
+          attribute="rotation"
+          begin="click"
+          dur="2000"
+          to="360 405 45"
+        ></a-animation>
+      </a-box>
+      <a-sphere
+        src="#sphereTexture"
+        radius="0.5"
+        position="3 0.5 -4"
+      ></a-sphere>
+      <a-cone
+        src="#coneTexture"
+        height="2"
+        radius-top="0.3"
+        position="0 1 -7"
+      ></a-cone>
+      <a-box
+        src="#box2Texture"
+        position="2.5 0.5 -7"
+        scale-on-mouseenter="to: 2.2 2.2 2.2"
+        scale-on-mouseleave="to: 2 2 2"
+      >
+        <a-animation
+          attribute="position"
+          to="2.5 2.2 -7"
+          direction="alternate"
+          dur="2000"
+          repeat="indefinite"
+        ></a-animation>
+      </a-box>
+      <!--       <a-light type="ambient" color="#445451"></a-light> -->
+      <a-plane
+        src="#groundTexture"
+        rotation="-90 0 0"
+        width="30"
+        height="30"
+        repeat="10 10"
+      ></a-plane>
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <!--       <a-light type="point" intensity="4" position="2 2 4"></a-light> -->
+    </a-scene>
+  </body>
+</html>
